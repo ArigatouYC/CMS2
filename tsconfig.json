@@ -1,18 +1,71 @@
+// 原先报错的代码
+// {
+//   "include": [
+//     "src/**/*.ts",
+//     "src/**/*.tsx",
+//     "src/**/*.vue",
+//     "auto-imports.d.ts",
+//     "components.d.ts"
+//   ],
+//   "compilerOptions": {
+//     "baseUrl": "./", // 解析非相对模块的基地址，默认是当前目录
+//     "paths": { //路径映射，相对于baseUrl
+//       "@/*": [
+//         "src/*"
+//       ]
+//     }
+//   },
+//   "files": [],
+//   "references": [
+//     {
+//       "path": "./tsconfig.node.json"
+//     },
+//     {
+//       "path": "./tsconfig.app.json"
+//     }
+//   ]
+// }
+// 新
 {
+  "files": [],
   "include": [
     "src/**/*.ts",
+    "src/**/*.d.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "auto-imports.d.ts",
-    "components.d.ts"
+    "*.ts"
   ],
-  "files": [],
   "references": [
     {
       "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  "compilerOptions": {
+    "types": [
+      "element-plus/global"
+    ],
+    "target": "esnext",
+    "module": "esnext",
+    "useDefineForClassFields": true,
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@": [
+        "src"
+      ],
+      "@/*": [
+        "src/*"
+      ]
+    }
+  }
 }
