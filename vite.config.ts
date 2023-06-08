@@ -1,3 +1,4 @@
+// old:
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
@@ -7,21 +8,71 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
+import { viteMockServe } from 'vite-plugin-mock'
+
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    vue(),
-    AutoImport({
-      resolvers: [ElementPlusResolver()],
-      eslintrc: { enabled: true }
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()],
-    }),
-  ],
+export default defineConfig(({ command }) => {
+  return {
+    plugins: [
+      vue(),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+        eslintrc: { enabled: true }
+      }),
+      viteMockServe({
+        // 此处配置只支持vite-plugin-mock@2 ，3.0不支持！！！！！2.0会404，2.9.8暂时没发现问题
+        localEnabled: command === 'serve',
+      }),
+
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
+    ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
-  }
+  }}
 })
+
+
+
+
+//new:
+// import { defineConfig } from 'vite'
+// import vue from '@vitejs/plugin-vue'
+
+// import path from "path"
+
+// import { viteMockServe } from 'vite-plugin-mock'
+
+// // https://vitejs.dev/config/
+// export default defineConfig(({ command }) => {
+//   return {
+//     plugins: [
+//       vue(),
+      
+//       viteMockServe({
+//         // 此处配置只支持vite-plugin-mock@2 ，3.0不支持！！！！！2.0会404，2.9.8暂时没发现问题
+//         localEnabled: command === 'serve',
+//       }),
+//     ],
+//     resolve: {
+//       alias: {
+//         "@": path.resolve("./src") // 相对路径别名配置，使用 @ 代替 src
+//       }
+//     },
+
+//     // 颜色变量scss
+//     css: {
+//       preprocessorOptions: {
+//         scss: {
+//           javascriptEnabled: true,
+//           additionalData: '@import "./src/styles/variable.scss";',
+//         },
+//       },
+//     },
+
+//   }
+// })
+

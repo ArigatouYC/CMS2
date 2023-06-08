@@ -16,11 +16,11 @@
             <el-dropdown>
                 <span class="el-dropdown-link">
                     <el-avatar :size="30" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" />
-                    <el-icon class="el-icon--right" color="#FFF">
+                    <el-icon class="el-icon--right" color="#000">
                         <arrow-down />
                     </el-icon>
                 </span>
-                <template #dropdown>gsd
+                <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item>Action 3</el-dropdown-item>
                         <el-dropdown-item>Action 4</el-dropdown-item>
@@ -62,6 +62,9 @@ let switchCollapse = () => {
     display: flex;
     // justify-content: center;
     align-items: center;
+
+    //消除鼠标悬停黑边框
+    outline: none;
 }
 
 .el-breadcrumb {
@@ -71,6 +74,7 @@ let switchCollapse = () => {
 h1 {
     color: #181818;
 }
+
 
 .el-icon {
     cursor: pointer;

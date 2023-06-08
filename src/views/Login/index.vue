@@ -1,18 +1,18 @@
 <template>
     <div class="outBox">
         <div class="loginBox">
-            <el-form :model="form" label-width="auto" :rules="rules">
+            <el-form :model="userInfo" label-width="auto">
 
                 <h1>登录</h1>
 
-                <el-form-item prop="account">
+                <el-form-item>
                     <p>账号:</p>
-                    <el-input v-model="form.accound" />
+                    <el-input v-model="userInfo.username" />
                 </el-form-item>
 
-                <el-form-item prop="password">
+                <el-form-item>
                     <p>密码:</p>
-                    <el-input v-model="form.password" type="password" />
+                    <el-input v-model="userInfo.password" type="password" />
                 </el-form-item>
 
                 <el-button type="primary" @click="onSubmit">登录</el-button>
@@ -24,25 +24,21 @@
 </template>
 
 <script setup lang="ts">
-import { FormRules } from 'element-plus';
 import { reactive } from 'vue';
-import { ref } from 'vue'
-let form = ref({
-    accound: '',
+
+//??
+import userStore_ from '@/stores/modules/user';
+let userStore = userStore_()
+
+let userInfo = reactive({
+    username: '',
     password: '',
 })
 
-let rules = reactive<FormRules>({
-    account: [
-        { required: true, message: "账号不能为空", trigger: "blur" },
-    ],
-    password: [
-        { required: true, message: "密码不能为空", trigger: "blur" },
-    ],
-})
 
 let onSubmit = () => {
-    ElMessage.success('success')
+    userStore.userLogin(userInfo)
+    // ElMessage.success('success')
 }
 </script>
 
@@ -62,10 +58,10 @@ let onSubmit = () => {
     background-color: #fff;
 
     h1 {
+        font-size: 25px;
         text-align: center;
         font-weight: normal;
     }
-
 }
 
 .el-button {
