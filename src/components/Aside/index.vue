@@ -45,7 +45,6 @@
                 </el-icon>
                 <span>用户管理</span>
             </el-menu-item>
-
             <!-- 下拉菜单 -->
             <el-menu default-active="2" class="el-menu-vertical-demo" :collapse='isCollapse' :collapse-transition="false">
                 <el-sub-menu index="1">
@@ -67,7 +66,6 @@
                 </el-sub-menu>
             </el-menu>
         </el-menu>
-        <el-button type="primary" @click="switchCollapse"></el-button>
     </el-aside>
 </template>
 
@@ -76,20 +74,18 @@
 import { isCollapse } from '@/components/commond/isCollapse'
 // let isCollapse = ref(false)
 
-let switchCollapse = () => {
-    isCollapse.value = !isCollapse.value
-}
 </script>
 
 <style scoped lang="scss">
 .el-aside {
-    background-color: #1919;
+    background-color: #CFD3DC;
+    border-right: 1px #FFF solid;
     width: 200px;
     height: 100vh;
 }
 
 .el-menu {
-    background-color: #888;
+    background-color: #CFD3DC;
     width: 100%;
     border-right: 0;
 }

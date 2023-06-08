@@ -5,8 +5,11 @@
             <Aside></Aside>
 
             <el-container class="c">
+
                 <Header></Header>
-                <el-main>Main</el-main>
+
+                <RouterView />
+
             </el-container>
         </el-container>
     </div>
