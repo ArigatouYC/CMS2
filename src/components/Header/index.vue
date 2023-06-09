@@ -27,6 +27,7 @@
                         <el-dropdown-item>Action 5</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
+
             </el-dropdown>
         </div>
     </div>
@@ -40,6 +41,7 @@ import { isCollapse } from '@/components/commond/isCollapse'
 let switchCollapse = () => {
     isCollapse.value = !isCollapse.value
 }
+
 </script>
 
 <style scoped lang="scss">

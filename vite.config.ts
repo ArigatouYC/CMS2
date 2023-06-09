@@ -19,13 +19,12 @@ export default defineConfig(({ command }) => {
         resolvers: [ElementPlusResolver()],
         eslintrc: { enabled: true }
       }),
-      viteMockServe({
-        // 此处配置只支持vite-plugin-mock@2 ，3.0不支持！！！！！2.0会404，2.9.8暂时没发现问题
-        localEnabled: command === 'serve',
-      }),
-
       Components({
         resolvers: [ElementPlusResolver()],
+      }),
+        viteMockServe({
+        // 此处配置只支持vite-plugin-mock@2 ，3.0不支持！！！！！2.0会404，2.9.8暂时没发现问题
+        localEnabled: command === 'serve',
       }),
     ],
   resolve: {
