@@ -43,12 +43,14 @@
         <!-- 下拉菜单 -->
         <el-menu default-active="2" class="el-menu-vertical-demo" :collapse='isCollapse' :collapse-transition="false">
             <el-sub-menu index="1">
+
                 <template #title>
                     <el-icon>
                         <Orange />
                     </el-icon>
                     <span>商品管理</span>
                 </template>
+
                 <el-menu-item index="1-1" @click="goGoodsManage1"><el-icon>
                         <UserFilled />
                     </el-icon><span>商品管理1</span>
@@ -64,9 +66,9 @@
                     </el-icon><span>商品管理3</span>
                 </el-menu-item>
 
-                <el-menu-item index="1-3" @click="goGoodsManage3"><el-icon>
+                <el-menu-item index="1-4" @click="goGoodsManage3"><el-icon>
                         <Folder />
-                    </el-icon><span>商品管理3</span>
+                    </el-icon><span>商品管理4</span>
                 </el-menu-item>
 
             </el-sub-menu>
@@ -82,7 +84,7 @@
             </el-menu-item> -->
 
             <el-menu :collapse-transition="false">
-                <el-menu-item @click="goDataScreen">
+                <el-menu-item>
                     <el-icon>
                         <Monitor />
                     </el-icon>
@@ -134,6 +136,7 @@ let goDataScreen = () => {
     border-right: 1px #FFF solid;
     width: 200px;
     height: 100vh;
+    transition: all 0.3s;
 }
 
 .el-menu {

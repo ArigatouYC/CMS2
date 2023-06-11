@@ -20,6 +20,7 @@ export interface loginResponseData extends ResponseData {
 //定义获取用户信息返回数据类型
 export interface userInfoReponseData extends ResponseData {
   data: {
+    checkUser: any
     routes: string[]
     buttons: string[]
     roles: string[]
