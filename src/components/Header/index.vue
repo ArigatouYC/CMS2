@@ -27,9 +27,7 @@
                 </span>
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item>Action 3</el-dropdown-item>
-                        <el-dropdown-item>Action 4</el-dropdown-item>
-                        <el-dropdown-item>Action 5</el-dropdown-item>
+                        <el-dropdown-item @click="loginOut">退出登录</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -42,8 +40,12 @@
 // import { ref } from "vue";
 // let isCollapse = ref(false)
 import { isCollapse } from '@/components/commond/isCollapse'
-import refshStatus from '@/stores/modules/refshStatus'
+import refshStatus_ from '@/stores/modules/refshStatus'
 import userStore_ from '@/stores/modules/user'
+
+import { useRouter } from "vue-router";
+
+let $router = useRouter()
 
 let userStore = userStore_()
 
@@ -51,13 +53,13 @@ let switchCollapse = () => {
     isCollapse.value = !isCollapse.value
 }
 
-let storesData = refshStatus()
+let refshStatus = refshStatus_()
 
 let refsh = () => {
-    storesData.flag = false
+    refshStatus.flag = false
     // 方法1
     setTimeout(() => {
-        storesData.flag = true
+        refshStatus.flag = true
     }, 400)
     // 方法2 nextTick
 }
@@ -69,6 +71,12 @@ let FullScreen = () => {
     } else {
         document.exitFullscreen()
     }
+}
+
+let loginOut = () => {
+    userStore.userLoginOut()
+    //不要在ts文件中跳转路由
+    $router.push({ path: '/login' })
 }
 
 </script>

@@ -60,19 +60,21 @@ let onSubmit = () => {
     userStore.userLogin(userInfo).then(
         (res) => {
             $router.push('/')
-            ElNotification.success({
+            ElNotification({
+                type: 'success',
                 title: '登录成功',
                 message: getTime(),
-                showClose: false,
+                duration: 1000,
             })
             loading.value = false
         },
         (err) => {
             console.log(err);
-            ElNotification.error({
+            ElNotification({
+                type: 'error',
                 title: '账号或密码不正确',
                 message: '请重试',
-                showClose: false,
+                duration: 1000
             })
             loading.value = false
         }
