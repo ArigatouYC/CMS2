@@ -42,6 +42,7 @@
 import { isCollapse } from '@/components/commond/isCollapse'
 import refshStatus_ from '@/stores/modules/refshStatus'
 import userStore_ from '@/stores/modules/user'
+// import { computed } from 'vue';
 
 import { useRouter } from "vue-router";
 
@@ -73,8 +74,16 @@ let FullScreen = () => {
     }
 }
 
-let loginOut = () => {
-    userStore.userLoginOut()
+// let loginStatus = computed(() => {
+//     if (userStore.isLogin) {
+//         return true
+//     } else {
+//         return false
+//     }
+// })
+
+let loginOut = async () => {
+    await userStore.userLoginOut()
     //不要在ts文件中跳转路由
     $router.push({ path: '/login' })
 }

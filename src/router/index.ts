@@ -12,7 +12,7 @@ const router = createRouter({
       children: [
         {
           path: '',
-          name: 'main',
+          name: '主页',
           component: () => import('@/views/Main/index.vue'),
         },
         // 权限管理
@@ -34,19 +34,24 @@ const router = createRouter({
 
         // 商品管理
         {
-          path: "/goodsmanagement1",
-          component: () => import('@/views/goodsManagement/goodsManagement1/index.vue'),
-          name: '商品管理1'
+          path: "/brandmanagement",
+          component: () => import('@/views/goodsManagement/brandmanagement/index.vue'),
+          name: '品牌管理'
         },
         {
-          path: "/goodsmanagement2",
-          component: () => import('@/views/goodsManagement/goodsManagement2/index.vue'),
-          name: '商品管理2'
+          path: "/attributesmanagement",
+          component: () => import('@/views/goodsManagement/attributesmanagement/index.vue'),
+          name: '属性管理'
         },
         {
-          path: "/goodsmanagement3",
-          component: () => import('@/views/goodsManagement/goodsManagement3/index.vue'),
-          name: '商品管理3'
+          path: "/skumanagement",
+          component: () => import('@/views/goodsManagement/skumanagement/index.vue'),
+          name: 'SKU管理'
+        },
+        {
+          path: "/spumanagement",
+          component: () => import('@/views/goodsManagement/spumanagement/index.vue'),
+          name: 'SPU管理'
         },
         {
           path: "/datascreen",

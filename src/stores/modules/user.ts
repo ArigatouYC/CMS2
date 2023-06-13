@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { reqLogin } from "@/apis/users/index";
-import { reqUserInfo } from "@/apis/users/index";
+
+import { reqLogin, reqUserInfo, reqLogout } from "@/apis/users/index";
 import type { loginForm } from "@/apis/users/type";
 import { SET_TOKEN, GET_TOKEN } from "@/utils/token";
 
@@ -11,7 +11,6 @@ let userStore = defineStore('User', {
             token: GET_TOKEN(),
             username: '',
             avatar: '',
-            isLogin: false
         }
     },
 
@@ -19,31 +18,37 @@ let userStore = defineStore('User', {
         async userLogin(data: loginForm) {
             let result: any = await reqLogin(data)
             if (result.code == 200) {
-                // console.log(result);
-                this.token = result.data.token
-                this.isLogin = true
-                SET_TOKEN(result.data.token)
-                return "success"
+                this.token = (result.data as string)
+                SET_TOKEN(result.data as string)
+                return "ok"
             } else {
-                this.isLogin = false
-                return Promise.reject(new Error("fail"))
+                return Promise.reject(new Error(result.message))
             }
         },
         async getUserInfo() {
             let result = await reqUserInfo();
             if (result.code == 200) {
-                this.username = result.data.checkUser.username
-                this.avatar = result.data.checkUser.avatar
+                this.username = result.data.name
+                this.avatar = result.data.avatar
             }
         },
 
-        userLoginOut() {
-            this.token = ''
-            this.username = ''
-            this.avatar = ''
-            localStorage.removeItem('TOKEN')
+        async userLoginOut() {
+            let result = await reqLogout();
+            if (result.code == 200) {
+                this.token = ''
+                this.username = ''
+                this.avatar = ''
+                localStorage.removeItem('TOKEN')
+                return 'ok'
+            } else {
+                return Promise.reject(new Error(result.message))
+            }
+
         }
     },
+
+
 
     getters: {
 
@@ -51,3 +56,6 @@ let userStore = defineStore('User', {
 })
 
 export default userStore
+
+
+

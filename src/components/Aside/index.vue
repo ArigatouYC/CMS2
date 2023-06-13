@@ -51,24 +51,24 @@
                     <span>商品管理</span>
                 </template>
 
-                <el-menu-item index="1-1" @click="goGoodsManage1"><el-icon>
+                <el-menu-item index="1-1" @click="goBrandsManage"><el-icon>
                         <UserFilled />
-                    </el-icon><span>商品管理1</span>
+                    </el-icon><span>品牌管理</span>
                 </el-menu-item>
 
-                <el-menu-item index="1-2" @click="goGoodsManage2"><el-icon>
+                <el-menu-item index="1-2" @click="goAttributesManage"><el-icon>
                         <List />
-                    </el-icon><span>商品管理2</span>
+                    </el-icon><span>属性管理</span>
                 </el-menu-item>
 
-                <el-menu-item index="1-3" @click="goGoodsManage3"><el-icon>
+                <el-menu-item index="1-3" @click="goSKUManage"><el-icon>
                         <Folder />
-                    </el-icon><span>商品管理3</span>
+                    </el-icon><span>SKU管理</span>
                 </el-menu-item>
 
-                <el-menu-item index="1-4" @click="goGoodsManage3"><el-icon>
+                <el-menu-item index="1-4" @click="goSPUManage"><el-icon>
                         <Folder />
-                    </el-icon><span>商品管理4</span>
+                    </el-icon><span>SPU管理</span>
                 </el-menu-item>
 
             </el-sub-menu>
@@ -84,7 +84,7 @@
             </el-menu-item> -->
 
             <el-menu :collapse-transition="false">
-                <el-menu-item>
+                <el-menu-item @click="goDataScreen">
                     <el-icon>
                         <Monitor />
                     </el-icon>
@@ -115,15 +115,19 @@ let goRoleManage = () => {
 let goMenuManage = () => {
     $router.push('/menumanagement')
 }
-let goGoodsManage1 = () => {
-    $router.push('/goodsmanagement1')
+let goBrandsManage = () => {
+    $router.push('/brandmanagement')
 }
-let goGoodsManage2 = () => {
-    $router.push('/goodsmanagement2')
+let goAttributesManage = () => {
+    $router.push('/attributesmanagement')
 }
-let goGoodsManage3 = () => {
-    $router.push('/goodsmanagement3')
+let goSKUManage = () => {
+    $router.push('/skumanagement')
 }
+let goSPUManage = () => {
+    $router.push('/spumanagement')
+}
+
 let goDataScreen = () => {
     $router.push('/datascreen')
 }

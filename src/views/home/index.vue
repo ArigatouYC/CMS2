@@ -27,8 +27,8 @@ import { onMounted } from 'vue';
 let storesData = refshStatus()
 let userStore = userStore_()
 
-onMounted(() => {
-    userStore.getUserInfo()
+onMounted(async () => {
+    await userStore.getUserInfo()
 })
 
 </script>

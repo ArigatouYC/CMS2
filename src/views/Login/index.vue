@@ -55,9 +55,9 @@ let rules = reactive<FormRules>({
 let $router = useRouter()
 let loading = ref(false)
 
-let onSubmit = () => {
+let onSubmit = async () => {
     loading.value = true
-    userStore.userLogin(userInfo).then(
+    await userStore.userLogin(userInfo).then(
         (res) => {
             $router.push('/')
             ElNotification({
