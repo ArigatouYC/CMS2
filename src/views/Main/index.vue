@@ -42,8 +42,6 @@ let storeData = storeData_()
 
 
 onMounted(() => {
-  console.log(storeData.username);
-
   axios.get(sentenceURL).then((res) => {
     sentence.value = res.data.anwei
   })
