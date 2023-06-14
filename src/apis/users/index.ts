@@ -28,16 +28,10 @@
 // //每日一言
 // export const getSentence = () => request.get<any, any>(API.SENTENCE)
 
-
-
 // 真接口
 //统一管理项目用户相关的接口
 import request from '@/utils/request'
-import type {
-  loginForm,
-  loginResponseData,
-  userInfoReponseData,
-} from './type'
+import type { loginForm, loginResponseData, userInfoReponseData } from './type'
 //项目用户相关的请求地址
 enum API {
   LOGIN_URL = '/admin/acl/index/login',
@@ -51,8 +45,7 @@ enum API {
 export const reqLogin = (data: loginForm) =>
   request.post<any, loginResponseData>(API.LOGIN_URL, data)
 //获取用户信息
-export const reqUserInfo = () =>
-  request.get<any, userInfoReponseData>(API.USERINFO_URL)
+export const reqUserInfo = () => request.get<any, userInfoReponseData>(API.USERINFO_URL)
 //退出登录
 export const reqLogout = () => request.post<any, any>(API.LOGOUT_URL)
 
