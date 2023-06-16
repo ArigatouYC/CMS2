@@ -6,15 +6,20 @@
 
         <el-form-item prop="username">
           <p>账号:</p>
-          <el-input v-model="userInfo.username" />
+          <el-input v-model="userInfo.username" clearable placeholder="输入账号" />
         </el-form-item>
 
         <el-form-item prop="password">
           <p>密码:</p>
-          <el-input v-model="userInfo.password" type="password" />
+          <el-input v-model="userInfo.password" type="password" show-password placeholder="输入密码" />
         </el-form-item>
         <el-button type="primary" @click="onSubmit" :loading="loading">登录</el-button>
       </el-form>
+      <div class="test">
+        <h1>
+          测试账号：cym123 <br> 密码：123456
+        </h1>
+      </div>
     </div>
   </div>
 </template>
@@ -92,7 +97,7 @@ let onSubmit = async () => {
   display: flex;
   align-items: center;
   height: 100vh;
-  // background-color: #CFD3DC;
+  background-color: #CFD3DC;
   background: url('@/assets/imgs/bg.jpg');
 }
 
@@ -114,5 +119,13 @@ let onSubmit = async () => {
 .el-button {
   width: 100%;
   margin-top: 30px;
+}
+
+.test {
+  margin-top: 20px
+}
+
+input {
+  background-color: #fff;
 }
 </style>

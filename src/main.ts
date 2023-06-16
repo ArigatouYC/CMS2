@@ -12,6 +12,14 @@ import pinia from './stores'
 
 import '@/permission'
 
+import 'element-plus/theme-chalk/dark/css-vars.css'
+import './styles/dark/css-vars.css'
+
+
+//echarts
+//...
+
+
 const app = createApp(App)
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)

@@ -2,45 +2,22 @@
   <el-card>
     <el-table border style="margin: 10px 0px" :data="skuArr">
       <el-table-column label="序号" type="index" align="center" width="80px"></el-table-column>
-      <el-table-column
-        label="名称"
-        show-overflow-tooltip
-        width="150px"
-        prop="skuName"
-      ></el-table-column>
-      <el-table-column
-        label="描述"
-        show-overflow-tooltip
-        width="150px"
-        prop="skuDesc"
-      ></el-table-column>
+      <el-table-column label="名称" show-overflow-tooltip width="150px" prop="skuName"></el-table-column>
+      <el-table-column label="描述" show-overflow-tooltip width="150px" prop="skuDesc"></el-table-column>
       <el-table-column label="图片" width="150px">
         <template #="{ row, $index }">
           <img :src="row.skuDefaultImg" alt="" style="width: 100px; height: 100px" />
         </template>
       </el-table-column>
-      <el-table-column label="重量" width="150px" prop="weight"></el-table-column>
+      <el-table-column label="库存" width="150px" prop="weight"></el-table-column>
       <el-table-column label="价格" width="150px" prop="price"></el-table-column>
       <el-table-column label="操作" width="250px" fixed="right">
         <template #="{ row, $index }">
-          <el-button
-            type="primary"
-            size="small"
-            :icon="row.isSale == 1 ? 'Bottom' : 'Top'"
-            @click="updateSale(row)"
-          ></el-button>
+          <el-button type="primary" size="small" :icon="row.isSale == 1 ? 'Bottom' : 'Top'"
+            @click="updateSale(row)"></el-button>
           <el-button type="primary" size="small" icon="Edit" @click="updateSku"></el-button>
-          <el-button
-            type="primary"
-            size="small"
-            icon="InfoFilled"
-            @click="findSku(row)"
-          ></el-button>
-          <el-popconfirm
-            :title="`你确定要删除${row.skuName}?`"
-            width="200px"
-            @confirm="removeSku(row.id)"
-          >
+          <el-button type="primary" size="small" icon="InfoFilled" @click="findSku(row)"></el-button>
+          <el-popconfirm :title="`你确定要删除${row.skuName}?`" width="200px" @confirm="removeSku(row.id)">
             <template #reference>
               <el-button type="danger" size="small" icon="Delete"></el-button>
             </template>
@@ -48,16 +25,9 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      v-model:current-page="pageNo"
-      v-model:page-size="pageSize"
-      :page-sizes="[10, 20, 30, 40]"
-      :background="true"
-      layout="prev, pager, next, jumper,->,sizes,total"
-      :total="total"
-      @current-change="getHasSku"
-      @size-change="handler"
-    />
+    <el-pagination v-model:current-page="pageNo" v-model:page-size="pageSize" :page-sizes="[10, 20, 30, 40]"
+      :background="true" layout="prev, pager, next, jumper,->,sizes,total" :total="total" @current-change="getHasSku"
+      @size-change="handler" />
     <!-- 抽屉组件:展示商品详情 -->
     <el-drawer v-model="drawer">
       <!-- 标题部分 -->
@@ -88,12 +58,8 @@
         <el-row style="margin: 10px 0px">
           <el-col :span="6">销售属性</el-col>
           <el-col :span="18">
-            <el-tag
-              style="margin: 5px"
-              v-for="item in skuInfo.skuSaleAttrValueList"
-              :key="item.id"
-              >{{ item.saleAttrValueName }}</el-tag
-            >
+            <el-tag style="margin: 5px" v-for="item in skuInfo.skuSaleAttrValueList" :key="item.id">{{
+              item.saleAttrValueName }}</el-tag>
           </el-col>
         </el-row>
         <el-row style="margin: 10px 0px">

@@ -1,4 +1,5 @@
 // import router from '@/router'
+// //@ts-ignore
 // import nprogress from 'nprogress'
 
 // import pinia from './stores';
@@ -8,48 +9,46 @@
 
 // import { GET_TOKEN } from "@/utils/token";
 
-// let userStore = userStore_()
+
+// let userStore = userStore_(pinia)
 
 // let token = GET_TOKEN()
 // let username = userStore.username
 
-// // let userStore = userStore_(pinia)
 
 // router.beforeEach((to, from, next) => {
-//     nprogress.start();
-//     document.title = `CC运营平台-${to.name}`
-
-//     if (token) {
-//         if (to.path == '/login') {
-//             next({ path: '/' })
-//         } else {
-//             if (username) {
-//                 next()
-//             } else {
-//                 try {
-//                     userStore.getUserInfo()
-//                     next()
-//                 } catch (error) {
-//                     userStore.userLoginOut();
-//                     next({ path: '/login' })
-//                 }
-
-//             }
-
-//         }
+//   nprogress.start();
+//   if (token) {
+//     if (to.path == '/login') {
+//       next({ path: '/' })
 //     } else {
-//         //!!!!!!!!!!!!!!!!!!!!!!!!是== 不能写=！！！！！！！！！！！！
-//         if (to.path == '/login') {
-//             next()
-//         } else {
-//             next({ path: '/login' })
+//       if (username) {
+//         next()
+//       } else {
+//         try {
+//           userStore.getUserInfo()
+//           next()
+//         } catch (error) {
+//           userStore.userLoginOut();
+//           next({ path: '/login' })
 //         }
+
+//       }
 
 //     }
+//   } else {
+//     //!!!!!!!!!!!!!!!!!!!!!!!!是== 不能写=！！！！！！！！！！！！
+//     if (to.path == '/login') {
+//       next()
+//     } else {
+//       next({ path: '/login' })
+//     }
+
+//   }
 // })
 
 // router.afterEach((to, from) => {
-//     nprogress.done();
+//   nprogress.done();
 // })
 
 //路由鉴权:鉴权,项目当中路由能不能被的权限的设置(某一个路由什么条件下可以访问、什么条件下不可以访问)
@@ -98,7 +97,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
           //用户手动修改本地存储token
           //退出登录->用户相关的数据清空
           await userStore.userLoginOut()
-          next({ path: '/login', query: { redirect: to.path } })
+          next({ path: '/login' })
         }
       }
     }
@@ -107,7 +106,7 @@ router.beforeEach(async (to: any, from: any, next: any) => {
     if (to.path == '/login') {
       next()
     } else {
-      next({ path: '/login', query: { redirect: to.path } })
+      next({ path: '/login' })
     }
   }
 })

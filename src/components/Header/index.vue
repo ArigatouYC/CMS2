@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box" :class="dark.isdark ? 'boxDark' : ''">
     <div class="boxleft">
       <el-icon size="25" @click="switchCollapse">
         <Fold v-show="isCollapse" />
@@ -14,19 +14,19 @@
     <div class="boxright">
       <div class="rightbutton">
         <el-button icon="RefreshRight" circle @click="refsh" />
+        <!-- <el-button icon="RefreshRight" circle /> -->
         <el-button icon="FullScreen" circle @click="FullScreen" />
-
 
         <el-popover placement="bottom" :width="300" trigger="click">
 
           <div class="titleText">主题设置：</div>
 
           <span class="text">颜色风格:</span>
-          <el-color-picker v-model="color" show-alpha :predefine="predefineColors" />
+          <el-color-picker v-model="color" show-alpha :predefine="predefineColors" @change="colorChanged" />
 
           <div class="darkSwitch">
             <span class="text">深色模式:</span>
-            <el-switch v-model="dark" inline-prompt active-icon="Moon" inactive-icon="Sunny" size="large"
+            <el-switch v-model="dark.isdark" inline-prompt active-icon="MoonNight" inactive-icon="Sunny" size="large"
               @change="darkChanged" />
           </div>
 
@@ -34,15 +34,15 @@
             <el-button icon="Setting" circle />
           </template>
         </el-popover>
-
-
-
       </div>
+
+
+
       <el-dropdown>
         <span class="el-dropdown-link">
           <el-avatar :size="32" :src="userStore.avatar" />
           <h2 class="username">{{ userStore.username }}</h2>
-          <el-icon class="el-icon--right" color="#000">
+          <el-icon class="el-icon--right">
             <arrow-down />
           </el-icon>
         </span>
@@ -65,6 +65,8 @@ import userStore_ from '@/stores/modules/user'
 // import { computed } from 'vue';
 
 import { useRouter } from 'vue-router'
+
+import darkStatus_ from '@/stores/modules/darkStatus'
 
 let $router = useRouter()
 
@@ -126,11 +128,20 @@ const predefineColors = ref([
   '#c7158577',
 ])
 
-const dark = ref(false)
-
+let dark = darkStatus_()
+let html = document.documentElement
 let darkChanged = () => {
-  console.log(dark.value);
 
+  // dark.isdark ? html.className = '' : html.className = 'dark'
+  if (dark.isdark) {
+    html.className = 'dark'
+  } else {
+    html.className = ''
+  }
+}
+
+let colorChanged = () => {
+  html.style.setProperty('--el-color-primary', color.value)
 }
 </script>
 
@@ -141,7 +152,12 @@ let darkChanged = () => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #cfd3dc;
+  border-bottom: #d5d5d5 solid 1px;
+  // background-color: #cfd3dc;
+}
+
+.boxDark {
+  border-bottom: #2c2c2c solid 1px;
 }
 
 .boxleft {
@@ -166,8 +182,13 @@ h1 {
   color: #181818;
 }
 
+// .box {
+//   background-color: #181818;
+// }
+
 .boxright {
   display: flex;
+  align-items: center;
 
   .rightbutton {
     margin-right: 30px;
