@@ -18,16 +18,26 @@
         <el-button icon="FullScreen" circle @click="FullScreen" />
 
         <el-popover placement="bottom" :width="300" trigger="click">
-
           <div class="titleText">主题设置：</div>
 
           <span class="text">颜色风格:</span>
-          <el-color-picker v-model="color" show-alpha :predefine="predefineColors" @change="colorChanged" />
+          <el-color-picker
+            v-model="color"
+            show-alpha
+            :predefine="predefineColors"
+            @change="colorChanged"
+          />
 
           <div class="darkSwitch">
             <span class="text">深色模式:</span>
-            <el-switch v-model="dark.isdark" inline-prompt active-icon="MoonNight" inactive-icon="Sunny" size="large"
-              @change="darkChanged" />
+            <el-switch
+              v-model="dark.isdark"
+              inline-prompt
+              active-icon="MoonNight"
+              inactive-icon="Sunny"
+              size="large"
+              @change="darkChanged"
+            />
           </div>
 
           <template #reference>
@@ -35,8 +45,6 @@
           </template>
         </el-popover>
       </div>
-
-
 
       <el-dropdown>
         <span class="el-dropdown-link">
@@ -57,7 +65,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
+import { ref } from 'vue'
 // let isCollapse = ref(false)
 import { isCollapse } from '@/components/commond/isCollapse'
 import refshStatus_ from '@/stores/modules/refshStatus'
@@ -125,19 +133,19 @@ const predefineColors = ref([
   'hsva(120, 40, 94, 0.5)',
   'hsl(181, 100%, 37%)',
   'hsla(209, 100%, 56%, 0.73)',
-  '#c7158577',
+  '#c7158577'
 ])
 
 let dark = darkStatus_()
 let html = document.documentElement
 let darkChanged = () => {
-
   // dark.isdark ? html.className = '' : html.className = 'dark'
   if (dark.isdark) {
     html.className = 'dark'
   } else {
     html.className = ''
   }
+  localStorage.setItem('darkStatus', dark.isdark.toString())
 }
 
 let colorChanged = () => {

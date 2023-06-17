@@ -9,21 +9,16 @@
       <div class="charts3" ref="charts3"></div>
       <div class="charts4" ref="charts4"></div>
     </div>
-
   </div>
 </template>
-  
+
 <script setup lang="ts">
+import * as echarts from 'echarts/core'
 
-import * as echarts from 'echarts/core';
-
-import { CanvasRenderer } from 'echarts/renderers';
+import { CanvasRenderer } from 'echarts/renderers'
 import { ref, onMounted } from 'vue'
 
-import {
-  BarChart,
-  LineChart
-} from 'echarts/charts';
+import { BarChart, LineChart } from 'echarts/charts'
 import {
   TitleComponent,
   TooltipComponent,
@@ -32,8 +27,8 @@ import {
   DatasetComponent,
   // 内置数据转换器组件 (filter, sort)
   TransformComponent
-} from 'echarts/components';
-import { LabelLayout, UniversalTransition } from 'echarts/features';
+} from 'echarts/components'
+import { LabelLayout, UniversalTransition } from 'echarts/features'
 // 注册必须的组件
 echarts.use([
   TitleComponent,
@@ -46,7 +41,7 @@ echarts.use([
   LabelLayout,
   UniversalTransition,
   CanvasRenderer
-]);
+])
 
 // 基于准备好的dom，初始化echarts实例
 let charts1 = ref()
@@ -72,10 +67,8 @@ onMounted(() => {
     ]
   })
 })
-
-
 </script>
-  
+
 <style scoped lang="scss">
 .box {
   height: 90vh;

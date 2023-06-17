@@ -7,12 +7,10 @@
         </div>
         <div class="right">
           <h2 class="hi">{{ nowTime }},{{ storeData.username }}</h2>
-          <br>
+          <br />
           <h2 class="cc">欢迎使用CC运营平台</h2>
         </div>
-
       </div>
-
     </el-card>
 
     <div class="box">
@@ -23,7 +21,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -39,7 +36,6 @@ let sentence = ref('')
 let sentenceURL = 'https://v.api.aa1.cn/api/api-wenan-anwei/index.php?type=json'
 let nowTime = getTime()
 let storeData = storeData_()
-
 
 onMounted(() => {
   axios.get(sentenceURL).then((res) => {
@@ -67,7 +63,6 @@ onMounted(() => {
   border-radius: 10px;
 }
 
-
 .cardContent {
   height: 16vh;
   display: flex;
@@ -84,12 +79,10 @@ onMounted(() => {
   }
 }
 
-
 .hi {
   font-weight: normal;
   font-size: 25px;
 }
-
 
 .sentence {
   width: 60vw;

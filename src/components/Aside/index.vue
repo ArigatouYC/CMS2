@@ -1,13 +1,11 @@
 <template>
   <div :class="dark.isdark ? 'dark' : 'noDark'">
     <el-aside :class="isCollapse ? 'menu-collapse' : ''">
-
       <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse" :collapse-transition="false">
         <el-menu-item>
           <!-- <img v-show="!isCollapse" src="@/assets/imgs/ynufe.png" alt="" /> -->
           <h1 v-show="!isCollapse" class="logo">CC运营平台管理</h1>
           <h1 v-show="isCollapse">CC</h1>
-
         </el-menu-item>
 
         <el-menu-item @click="goHome">
@@ -65,23 +63,24 @@
       </el-menu>
 
       <!-- 普通菜单 -->
-      <el-menu>
-        <!-- <el-menu-item>
+      <!-- <el-menu-item>
                 <el-icon>
                     <Avatar />
                 </el-icon>
                 <span>用户管理</span>
             </el-menu-item> -->
 
+      <div @click="goDataScreen">
         <el-menu :collapse-transition="false">
-          <el-menu-item @click="goDataScreen">
+          <el-menu-item>
             <el-icon>
               <Monitor />
             </el-icon>
             <span>数据统计</span>
           </el-menu-item>
         </el-menu>
-      </el-menu>
+      </div>
+
 
     </el-aside>
   </div>
@@ -120,7 +119,6 @@ let goDataScreen = () => {
 }
 
 let dark = darkStatus_()
-
 </script>
 
 <style scoped lang="scss">

@@ -9,12 +9,10 @@
 
 // import { GET_TOKEN } from "@/utils/token";
 
-
 // let userStore = userStore_(pinia)
 
 // let token = GET_TOKEN()
 // let username = userStore.username
-
 
 // router.beforeEach((to, from, next) => {
 //   nprogress.start();
