@@ -108,7 +108,6 @@ router.beforeEach(async (to: any, from: any, next: any) => {
     }
   }
 })
-
 //全局后置守卫
 router.afterEach((to: any, from: any) => {
   nprogress.done()
