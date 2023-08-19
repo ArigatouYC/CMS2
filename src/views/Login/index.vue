@@ -21,9 +21,9 @@
         <el-button type="primary" @click="onSubmit" :loading="loading">登录</el-button>
       </el-form>
       <div class="test">
-        <h1>
-          测试账号：cym123 <br />
-          密码：123456
+        <h1 class="test">
+          测试账号：admin <br />
+          密码：atguigu123
         </h1>
       </div>
     </div>
@@ -99,6 +99,7 @@ let onSubmit = async () => {
 </script>
 
 <style scoped lang="scss">
+
 .outBox {
   display: flex;
   align-items: center;
@@ -120,6 +121,7 @@ let onSubmit = async () => {
     text-align: center;
     font-weight: normal;
   }
+  
 }
 
 .el-button {
@@ -129,9 +131,11 @@ let onSubmit = async () => {
 
 .test {
   margin-top: 20px;
+  color: #888;
 }
 
 input {
   background-color: #fff;
 }
+
 </style>
