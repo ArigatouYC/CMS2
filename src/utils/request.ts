@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 import userStore_ from '@/stores/modules/user'
-
 //创建axios实例
 const request = axios.create({
   baseURL: import.meta.env.VITE_APP_BASE_API,
