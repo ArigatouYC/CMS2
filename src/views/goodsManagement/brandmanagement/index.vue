@@ -57,14 +57,8 @@ let handleCurrentChange = () => {
   <div>
     <el-card class="box-card">
       <!-- 卡片顶部添加品牌按钮 -->
-      <el-button
-        type="primary"
-        size="default"
-        icon="Plus"
-        @click="addTrademark"
-        v-has="`btn.Trademark.add`"
-        >添加品牌</el-button
-      >
+      <el-button type="primary" size="default" icon="Plus" @click="addTrademark"
+        v-has="`btn.Trademark.add`">添加品牌</el-button>
       <el-table style="margin: 10px 0px" border :data="trademarkArr">
         <el-table-column label="序号" width="80px" align="center" type="index"></el-table-column>
         <!-- table-column:默认展示数据用div -->
@@ -76,18 +70,8 @@ let handleCurrentChange = () => {
         </el-table-column>
         <el-table-column label="品牌操作">
           <template #="{ row, $index }">
-            <el-button
-              type="primary"
-              size="small"
-              icon="Edit"
-              @click="updateTrademark(row)"
-            ></el-button>
-            <el-popconfirm
-              :title="`您确定要删除${row.tmName}?`"
-              width="250px"
-              icon="Delete"
-              @confirm="removeTradeMark(row.id)"
-            >
+            <el-button type="primary" size="small" icon="Edit" @click="updateTrademark(row)"></el-button>
+            <el-popconfirm :title="`您确定要删除${row.tmName}?`" width="250px" icon="Delete" @confirm="removeTradeMark(row.id)">
               <template #reference>
                 <el-button type="danger" size="small" icon="Delete"></el-button>
               </template>
@@ -95,17 +79,9 @@ let handleCurrentChange = () => {
           </template>
         </el-table-column>
       </el-table>
-      <el-pagination
-        @size-change="sizeChange"
-        @current-change="getHasTrademark"
-        :pager-count="9"
-        v-model:current-page="pageNo"
-        v-model:page-size="limit"
-        :page-sizes="[3, 5, 7, 9]"
-        :background="true"
-        layout="prev, pager, next, jumper,->,sizes,total"
-        :total="total"
-      />
+      <el-pagination @size-change="sizeChange" @current-change="getHasTrademark" :pager-count="9"
+        v-model:current-page="pageNo" v-model:page-size="limit" :page-sizes="[3, 5, 7, 9]" :background="true"
+        layout="prev, pager, next, jumper,->,sizes,total" :total="total" />
     </el-card>
 
     <el-dialog v-model="dialogFormVisible" :title="trademarkParams.id ? '修改品牌' : '添加品牌'">
@@ -115,13 +91,8 @@ let handleCurrentChange = () => {
         </el-form-item>
         <el-form-item label="品牌LOGO" label-width="100px" prop="logoUrl">
           <!-- upload组件属性:action图片上传路径书写/api,代理服务器不发送这次post请求  -->
-          <el-upload
-            class="avatar-uploader"
-            action="/api/admin/product/fileUpload"
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload"
-          >
+          <el-upload class="avatar-uploader" action="/api/admin/product/fileUpload" :show-file-list="false"
+            :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
             <img v-if="trademarkParams.logoUrl" :src="trademarkParams.logoUrl" class="avatar" />
             <el-icon v-else class="avatar-uploader-icon">
               <Plus />
@@ -139,7 +110,7 @@ let handleCurrentChange = () => {
 </template>
 
 <script setup lang="ts">
-import { ElMessage, UploadProps, formEmits } from 'element-plus'
+import { ElMessage, UploadProps } from 'element-plus'
 //引入组合式API函数ref
 import { ref, onMounted, reactive, nextTick } from 'vue'
 import {

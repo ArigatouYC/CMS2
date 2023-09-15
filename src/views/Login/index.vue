@@ -99,7 +99,6 @@ let onSubmit = async () => {
 </script>
 
 <style scoped lang="scss">
-
 .outBox {
   display: flex;
   align-items: center;
@@ -121,7 +120,6 @@ let onSubmit = async () => {
     text-align: center;
     font-weight: normal;
   }
-  
 }
 
 .el-button {
@@ -137,5 +135,4 @@ let onSubmit = async () => {
 input {
   background-color: #fff;
 }
-
 </style>

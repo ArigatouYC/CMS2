@@ -1,7 +1,12 @@
 <template>
   <div :class="dark.isdark ? 'dark' : 'noDark'">
     <el-aside :class="isCollapse ? 'menu-collapse' : ''">
-      <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse" :collapse-transition="false">
+      <el-menu
+        default-active="2"
+        class="el-menu-vertical-demo"
+        :collapse="isCollapse"
+        :collapse-transition="false"
+      >
         <el-menu-item>
           <!-- <img v-show="!isCollapse" src="@/assets/imgs/ynufe.png" alt="" /> -->
           <h1 v-show="!isCollapse" class="logo">CC运营平台管理</h1>
@@ -26,17 +31,25 @@
           </template>
           <el-menu-item index="1-1" @click="goUserManage">
             <el-icon>
-              <UserFilled />
-            </el-icon><span>用户管理</span></el-menu-item>
+              <UserFilled /> </el-icon
+            ><span>用户管理</span></el-menu-item
+          >
 
-          <el-menu-item index="1-2" @click="goRoleManage"><el-icon>
-              <List />
-            </el-icon><span>角色管理</span></el-menu-item>
+          <el-menu-item index="1-2" @click="goRoleManage"
+            ><el-icon>
+              <List /> </el-icon
+            ><span>角色管理</span></el-menu-item
+          >
         </el-sub-menu>
       </el-menu>
 
       <!-- 下拉菜单 -->
-      <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse" :collapse-transition="false">
+      <el-menu
+        default-active="2"
+        class="el-menu-vertical-demo"
+        :collapse="isCollapse"
+        :collapse-transition="false"
+      >
         <el-sub-menu index="1">
           <template #title>
             <el-icon>
@@ -45,19 +58,22 @@
             <span>商品管理</span>
           </template>
 
-          <el-menu-item index="1-1" @click="goBrandsManage"><el-icon>
-              <UserFilled />
-            </el-icon><span>品牌管理</span>
+          <el-menu-item index="1-1" @click="goBrandsManage"
+            ><el-icon>
+              <UserFilled /> </el-icon
+            ><span>品牌管理</span>
           </el-menu-item>
 
-          <el-menu-item index="1-2" @click="goAttributesManage"><el-icon>
-              <List />
-            </el-icon><span>属性管理</span>
+          <el-menu-item index="1-2" @click="goAttributesManage"
+            ><el-icon>
+              <List /> </el-icon
+            ><span>属性管理</span>
           </el-menu-item>
 
-          <el-menu-item index="1-3" @click="goSKUManage"><el-icon>
-              <Shop />
-            </el-icon><span>库存管理</span>
+          <el-menu-item index="1-3" @click="goSKUManage"
+            ><el-icon>
+              <Shop /> </el-icon
+            ><span>库存管理</span>
           </el-menu-item>
         </el-sub-menu>
       </el-menu>
@@ -80,8 +96,6 @@
           </el-menu-item>
         </el-menu>
       </div>
-
-
     </el-aside>
   </div>
 </template>

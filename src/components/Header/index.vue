@@ -5,11 +5,6 @@
         <Fold v-show="isCollapse" />
         <Expand v-show="!isCollapse" />
       </el-icon>
-
-      <!-- <el-breadcrumb separator-icon="ArrowRight">
-                <el-breadcrumb-item>{{ $router.currentRoute.value.matched[0].name }}</el-breadcrumb-item>
-                <el-breadcrumb-item>{{ $router.currentRoute.value.matched[1].name }}</el-breadcrumb-item>
-            </el-breadcrumb> -->
     </div>
     <div class="boxright">
       <div class="rightbutton">
